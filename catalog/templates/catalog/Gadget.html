@@ -1,0 +1,28 @@
+{% load static %}
+
+{% block content %}
+
+    {% for x in variable %}
+        {% if x.marca|stringformat:"s"  == objetivo %}
+            {% if x.facebook %}
+                <a href="{{ x.facebook }}" target="_blank" ><img alt="W3Schools" src="{% static 'img/Logo-Facebook.png' %}" class="social-icons" ></a>
+            {% endif %}
+            {% if x.instagram %}
+                <a href="{{ x.instagram }}" target="_blank" ><img alt="W3Schools" src="{% static 'img/Logo-instagram.png' %}" class="social-icons" ></a>
+            {% endif %}
+            {% if x.youtube %}
+                <a href="{{ x.youtube }}" target="_blank" ><img alt="W3Schools" src="{% static 'img/Logo-youtube.png' %}" class="social-icons" ></a>
+            {% endif %}
+            {% if x.twitter %}
+                <a href="{{ x.twitter }}" target="_blank" ><img alt="W3Schools" src="{% static 'img/Logo-twitter.png' %}" class="social-icons" ></a>
+            {% endif %}
+            {% if x.spotify %}
+                <a href="{{ x.spotify }}" target="_blank" ><img alt="W3Schools" src="{% static 'img/Logo-spotify.png' %}" class="social-icons" ></a>
+            {% endif %}
+            {% if x.itunes %}
+                <a href="{{ x.itunes }}" target="_blank" ><img alt="W3Schools" src="{% static 'img/Logo-itunes.png' %}" class="social-icons" ></a>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

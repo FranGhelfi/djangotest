@@ -1,0 +1,74 @@
+{% extends "base_generic.html" %}
+
+  {% load static %}
+      <img src="{% static 'img/Barra-Morada.png' %}" alt="My image"/>
+      <img src="{% static 'img/Barra-Blanca.png' %}" alt="My image"/>
+      <img src="{% static 'img/Logos Transparente.png' %}" alt="My image"/>
+
+{% block content %}
+
+
+<header>
+      <div style="background-color:black;" class="jumbotron">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+				<img src="{% static 'img/Logos Transparente.png' %}" class="Logo" alt="Tres Peces Logo"/>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+<div class="jumbotron" style="background-color: black;">
+    <div class="container">
+        <div class="row" >
+
+
+                {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
+
+                {% if next %}
+                    {% if user.is_authenticated %}
+                    <p>Your account doesn't have access to this page. To proceed,
+                    please login with an account that has access.</p>
+                    {% else %}
+                    {% endif %}
+                {% endif %}
+
+
+
+                <form method="post" action="{% url 'login' %}" style="margin-left: auto; margin-right: auto;">
+                {% csrf_token %}
+
+
+                         <div style="padding-bottom:15px; color:white;" >
+                             <td>Pececillo:</td><br>
+                             <td>{{ form.username }}</td>
+                         </div>
+
+                         <div style="padding-bottom:15px; color:white;">
+                             <td>Secreto:</td><br>
+                             <td class="form_login">{{ form.password }}</td>
+                         </div>
+
+                        <p><a href="{% url 'password_reset' %}">¿Otra vez olvidaste la clave, Manué?!</a></p>
+
+
+                  <input type="submit" value="login" />
+                  <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+                </form>
+
+                {# Assumes you setup the password_reset view in your URLconf #}
+
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

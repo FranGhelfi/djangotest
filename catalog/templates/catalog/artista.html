@@ -1,0 +1,106 @@
+{% extends "base_generic.html" %}
+
+
+
+ {% load static %}
+
+
+
+
+{% block content %}
+
+
+<!-- Header -->
+
+    {% for x in data_artista %}
+        {% if x.artista|stringformat:"s" == objetivo %}
+            <header style="padding-bottom: 0px;">
+                <a href="https://www.w3schools.com"><img border="0" alt="{{ x.artista }}" src=" {{ x.foto_header.url }} " class="esconder"></a>
+                <a href="https://www.w3schools.com"><img border="0" alt="{{ x.artista }}" src=" {{ x.foto_artista.url }} " class="mostrar" style="width: 100%;"></a>
+            </header>
+        {% endif %}
+    {% endfor %}
+
+<!--suppress Annotator -->
+
+<div class="jumbotron" style="background-color: #EEEEEE">
+    {% for y in data_artista %}
+
+        <div class="container">
+            {% if y.artista|stringformat:"s" == objetivo %}
+
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img src="{% static 'img/Barra-Morada.png' %}" class="barra" width="100px" height="20px" alt="Tres Peces Barra Morada"/>
+                            <h1>{{ y.artista }}</h1>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-top: 40px">
+                        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                <div id="my-content">
+                                    <a href="https://www.w3schools.com"><img border="0" alt="{{ y.artista }}"
+                                             src="{{ y.foto_artista.url }}" class="artist-foto" style="width: 85%;"></a>
+                                </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+
+                                <p style="padding-top: 10px;"> {{ y.brief }} </p>
+
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                <div id="my-content">
+                                    <p> {{ y.bio }} </p>
+                                </div>
+                        </div>
+
+                    </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+ </div>
+
+
+
+ <!-- Gadget Videos Artistas -->
+
+
+ 	<div class="jumbotron" style="background-color: #b55151; padding-right:0px; padding-left:0px;">
+		<div class="container" >
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-left: auto; margin-right: auto;"> {% include "catalog/Videos.html" %} </div>
+            </div>
+		</div>
+	</div>
+
+<!-- Gadget Discos Artistas -->
+
+	<div class="jumbotron" style="padding-right:0px; padding-left:0px;">
+		<div class="container" >
+                <div style="margin-left: auto; margin-right: auto;"> {% include "catalog/Discos.html" %} </div>
+		</div>
+	</div>
+
+<!-- Gadget social media -->
+
+	<div class="jumbotron" style="background-color: #181413;">
+       		<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
+                <div class="row">
+                        <div style="margin-left: auto; margin-right: auto;"> {% include "catalog/Gadget.html" %} </div>
+                </div>
+		    </div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

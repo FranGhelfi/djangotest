@@ -1,0 +1,22 @@
+{% load static %}
+
+{% block content %}
+
+    <div class="row" >
+    {% for x in videos_artista %}
+        {% if x.titulo %}
+            {% if x.artista|stringformat:"s" == objetivo %}
+                <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 row-full" style="margin-left: auto; margin-right: auto;">
+                    <iframe style="" src="{{ x.link }}"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+				    <p style="color:white; font-size:15px;" class="esconder">{{ x.titulo }} </>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
+
